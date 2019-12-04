@@ -1,14 +1,18 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 
+
+import {Provider as BlogProvider} from './context/BlogContext';
 import BlogIndex from './screens/BlogsIndex';
-import {BlogProvider} from './context/BlogContext';
+import ShowBlog from './screens/ShowBlog'
+import Create from './screens/Create'
 
 const navigator = createStackNavigator(
   {
     Index: BlogIndex,
+    Show: ShowBlog,
+    Create: Create
   },
   {
     initialRouteName: 'Index',
