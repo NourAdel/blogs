@@ -16,12 +16,15 @@ const BlogsIndex = ({navigation}) => {
   const {state, deletePost, getPosts} = useContext(BlogContext);
 
   useEffect(() => {
-    getPosts()
+    getPosts();
 
-      navigation.addListener('didFocus',()=>{
-        getPosts()
-      })
-    
+    const listener = navigation.addListener('didFocus', () => {
+      getPosts();
+    });
+
+    return () => {
+      listener.remove();
+    };
   }, []);
   return (
     <View>
