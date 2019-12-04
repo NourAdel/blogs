@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -13,7 +13,16 @@ import Iconplus from 'react-native-vector-icons/Entypo';
 import {Context as BlogContext} from '../context/BlogContext';
 
 const BlogsIndex = ({navigation}) => {
-  const {state, deletePost} = useContext(BlogContext);
+  const {state, deletePost, getPosts} = useContext(BlogContext);
+
+  useEffect(() => {
+    getPosts()
+
+      navigation.addListener('didFocus',()=>{
+        getPosts()
+      })
+    
+  }, []);
   return (
     <View>
       <FlatList
