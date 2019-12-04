@@ -7,7 +7,7 @@ const Create = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const {addPost} = useContext(Context)
+  const {addPost} = useContext(Context);
 
   return (
     <View>
@@ -24,8 +24,13 @@ const Create = ({navigation}) => {
         value={content}
         onChangeText={text => setContent(text)}
       />
-      <Button title="Add Post"
-      onPress={()=>addPost(title,content)}/>
+      <Button
+        title="Add Post"
+        onPress={() => {
+          addPost(title, content);
+          navigation.navigate('Index');
+        }}
+      />
     </View>
   );
 };
@@ -42,7 +47,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 20,
     marginBottom: 5,
-    marginLeft:5
+    marginLeft: 5,
   },
 });
 

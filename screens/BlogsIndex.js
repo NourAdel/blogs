@@ -13,10 +13,9 @@ import Iconplus from 'react-native-vector-icons/Entypo';
 import {Context as BlogContext} from '../context/BlogContext';
 
 const BlogsIndex = ({navigation}) => {
-  const {state, addPost, deletePost} = useContext(BlogContext);
+  const {state, deletePost} = useContext(BlogContext);
   return (
     <View>
-      <Button title="Add Post" onPress={addPost} />
       <FlatList
         data={state}
         keyExtractor={post => post.title}
